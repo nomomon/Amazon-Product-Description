@@ -1,4 +1,4 @@
-# Amazon product description generator for [texta.ai](texta.ai)
+# Amazon product description generator for [texta.ai](https://texta.ai)
 [Видео туториал](https://www.youtube.com/watch?v=GzHJ3NUVtV4)
 
 Все не так уж и сложно. Для начала скачаем нужную библиотеку.
