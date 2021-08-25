@@ -4,7 +4,7 @@
 Все не так уж и сложно. Для начала скачаем нужную библиотеку.
 
 ```
-!pip install happytransformer
+$ pip install happytransformer
 ```
 
 Скачиваем модельку с [drive](https://drive.google.com/drive/folders/1a4SclxrGzdjrNlG4sUT3Wzpyn8qqxWLu?usp=sharing) или с этой github repo. Тут всего 4 варианта (0 тренировалась меньше всех, 3 больше).
