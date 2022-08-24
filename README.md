@@ -1,44 +1,27 @@
-# Amazon product description generator for [texta.ai](https://texta.ai)
-[Видео туториал](https://www.youtube.com/watch?v=GzHJ3NUVtV4)
+# Amazon Description Generator
 
-Все не так уж и сложно. Для начала скачаем нужную библиотеку.
+AI that generates Amazon-style product descriptions using a fine-tuned GPT-Neo model. Built as a proof of concept for [Texta.ai](https://texta.ai/).
 
-```
-$ pip install happytransformer
-```
+## What's this about
 
-Скачиваем модельку с [drive](https://drive.google.com/drive/folders/1a4SclxrGzdjrNlG4sUT3Wzpyn8qqxWLu?usp=sharing) или с этой github repo. Тут всего 4 варианта (0 тренировалась меньше всех, 3 больше).
+The founder of Texta.ai reached out — they were using GPT-3 to generate product descriptions but it was too expensive. I built a cheaper alternative by fine-tuning [GPT-Neo](https://www.eleuther.ai/projects/gpt-neo/) on scraped Amazon product data.
 
-Подклучаем эту библиотеку и загружаем выбранную модельку, указывая на нее путь в `directory`.
+Started with Puppeteer scraping from Amazon directly, but it was painfully slow. Switched to a pre-scraped [dataset from UCSD](https://jmcauley.ucsd.edu/data/amazon/). Cleaned the data, shaped it into prompt templates, and fine-tuned multiple models using [HappyTransformer](https://happytransformer.com/) on Google Colab.
 
-```python
-from happytransformer import HappyGeneration
+There are 4 model variants (0–3), each trained progressively longer. Model 3 gives the best results.
 
-happy_gen = HappyGeneration(load_path="/content/drive/MyDrive/GPT-Neo_Amazon/3/")
-```
+## How to launch
 
-Далее, можно задать настройки генирации. Если все есть вопросы, что это за настройки, то можно посмотреть их [тут](https://happytransformer.com/text-generation/settings/).
-
-```python
-min_length =  10
-max_length = 100 
-do_sample = True
-early_stopping = True
-num_beams = 1 
-temperature = 0.6
-top_k = 50
-top_p = 0.8
-no_repeat_ngram_size = 1
-
-gen_args = GENSettings(min_length, max_length, do_sample, early_stopping, num_beams, temperature, top_k, no_repeat_ngram_size, top_p)
+```bash
+pip install happytransformer
 ```
 
-Для генерации, запускаем следующию функцию, где `text` это промпт который используем. Примеры таких можно найти в вкладке Test Model этого файла. Результат генерации находится в `result.text`.
+Then open the notebook:
 
-```python
-result = happy_gen.generate_text(text, args=gen_args)
-
-print(result.text)
+```bash
+jupyter notebook Texta_ai_Amazon_gpt_neo.ipynb
 ```
 
-Вроде все. Спасибо за внимание.
+Download models from [Google Drive](https://drive.google.com/drive/folders/1a4SclxrGzdjrNlG4sUT3Wzpyn8qqxWLu?usp=sharing) or use the ones in this repo. Point `load_path` to your chosen model directory.
+
+[Video tutorial](https://www.youtube.com/watch?v=GzHJ3NUVtV4) (in Russian)
