@@ -1,5 +1,7 @@
 # Amazon Description Generator
 
+![cover](./assets/cover.jpeg)
+
 AI that generates Amazon-style product descriptions using a fine-tuned GPT-Neo model. Built as a proof of concept for [Texta.ai](https://texta.ai/).
 
 ## What's this about
